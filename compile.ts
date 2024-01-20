@@ -32,6 +32,7 @@ const data = yaml.parse(Deno.readTextFileSync('./pages.yaml')) as Record<string,
   //------------\\
  // ~MAIN BEGIN~ \\
 //----------------\\
+ensureDirSync('./output');
 Deno.removeSync('./output', { recursive: true })
 
 ensureDirSync('./source/assets/css');
