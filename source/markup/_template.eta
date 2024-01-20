@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= it.title %></title>
+    <meta name="description" content="<%= it.description %>">
+
+    <%~
+      it.css.map(url => {
+        return `<link rel="stylesheet" href="${'/assets' + (url.startsWith('/') ? url : '/' + url)}">`;
+      }).join()
+    %>
+
+    <%~
+      it.js.map(url => {
+        return `<script defer src="${'/assets' + (url.startsWith('/') ? url : '/' + url)}"></script>`;
+      }).join()
+    %>
+  </head>
+  <body>
+    <%~ it.body %>
+  </body>
+</html>

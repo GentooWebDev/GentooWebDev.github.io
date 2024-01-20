@@ -1,0 +1,10 @@
+index:
+  title: Gentoo Web Development | Home
+  description: >-
+    Where sleek design meets penguin power.
+    Dive into creative solutions for your website.
+    Join the penguin revolution!
+  css:
+    - css/main.css
+  js:
+    - js/main.js
