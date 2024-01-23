@@ -1,1 +1,17 @@
 <% layout("./_template.eta") %>
+
+<div id="container">
+  <header>
+    <p>Logo</p>
+  </header>
+  
+  <main>
+    <h1>Gentoo Web Development</h1>
+    <hr>
+    <p>Coming soon...</p>
+  </main>
+  
+  <footer>
+    <p>&copy; Gentoo Web Dev, 2024</p>
+  </div>
+</div>

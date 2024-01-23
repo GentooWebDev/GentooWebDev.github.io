@@ -1,1 +1,58 @@
 * { box-sizing: border-box; }
+body, html { height: 100%; margin: 0; }
+
+#container {
+  background-image: url('/assets/img/swimming.jpg');
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  font-size: max(24px, 2vw);
+}
+
+@media (max-width: 950px) {
+  #container {
+    background-image: url('/assets/img/waving.jpg');
+  }
+}
+
+@media (max-width: 520px) {
+  #container {
+    font-size: 5vw;
+  }
+}
+
+header {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
+footer {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  font-size: 0.75em;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+hr {
+  margin: auto;
+  width: 60%;
+  border-style: solid;
+  border-radius: 16px;
+}
+
+p {
+  margin: 0;
+}
