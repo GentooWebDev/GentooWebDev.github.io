@@ -1,10 +1,10 @@
 index:
-  title: Gentoo Web Development | Home
+  title: Coming Soon | Gentoo Web Development
   description: >-
     Where sleek design meets penguin power.
     Dive into creative solutions for your website.
     Join the penguin revolution!
   css:
     - css/main.css
-  js:
-    - js/main.js
+  gfonts:
+    - Ubuntu:ital,wght@0,400;0,700;1,300

@@ -7,8 +7,9 @@ import CleanCSS from 'npm:clean-css';
 interface PageDefinition {
   title: string,
   description: string,
-  css: string[],
-  js: string[],
+  css?: string[],
+  js?: string[],
+  gfonts?: string[]
 }
 
 const htmlMinifierOptions = {

@@ -7,15 +7,24 @@
     <meta name="description" content="<%= it.description %>">
 
     <%~
-      it.css.map(url => {
-        return `<link rel="stylesheet" href="${'/assets' + (url.startsWith('/') ? url : '/' + url)}">`;
-      }).join()
+      it.gfonts ? '<link rel="preconnect" href="https://fonts.googleapis.com">' +
+                  '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
+                  it.gfonts.map(
+                    font => `<link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet">`
+                  ).join()
+                : '';
     %>
 
     <%~
-      it.js.map(url => {
-        return `<script defer src="${'/assets' + (url.startsWith('/') ? url : '/' + url)}"></script>`;
-      }).join()
+      it.css?.map(
+        url => `<link rel="stylesheet" href="${'/assets' + (url.startsWith('/') ? url : '/' + url)}">`
+      ).join() || '';
+    %>
+
+    <%~
+      it.js?.map(
+        url => `<script defer src="${'/assets' + (url.startsWith('/') ? url : '/' + url)}"></script>`
+      ).join() || '';
     %>
   </head>
   <body>
