@@ -32,7 +32,7 @@ jobs:
           deno-version: v1.x
 
       - name: Build Site
-        run: deno run --allow-read --allow-write compile.ts
+        run: deno run --allow-read --allow-write --allow-env=HOME compile.ts
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

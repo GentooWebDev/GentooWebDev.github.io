@@ -1,5 +1,15 @@
-* { box-sizing: border-box; }
-body, html { height: 100%; margin: 0; }
+* { box-sizing: border-box; touch-action: manipulation; }
+body, html { height: 100%; width: 100%; margin: 0; }
+
+body {
+  background: #759496;
+  background: linear-gradient(177deg, #759496 0%, #012426 80%, #012525 100%);
+
+  padding: 0.5rem;
+  transition: padding 0.5s ease-in-out;
+
+  @media (max-width: 500px) { padding: 0; }
+}
 
 #container {
   background-image: url('/assets/img/swimming.jpg');
@@ -11,17 +21,19 @@ body, html { height: 100%; margin: 0; }
   color: white;
   font-family: "Ubuntu", sans-serif;
   font-size: max(24px, 2vw);
-}
 
-@media (max-width: 950px) {
-  #container {
-    background-image: url('/assets/img/waving.jpg');
-  }
-}
+  border-radius: 12px;
+  box-shadow: black 0 0 1em;
 
-@media (max-width: 520px) {
-  #container {
+  transition: border-radius 0.5s ease-in-out;
+
+  @media (max-width: 500px) {
     font-size: 5vw;
+    border-radius: 0;
+  }
+
+  @media (max-aspect-ratio: 9/8) {
+    background-image: url('/assets/img/waving.jpg');
   }
 }
 
@@ -36,6 +48,8 @@ footer {
   bottom: 1em;
   left: 1em;
   font-size: 0.75em;
+  font-weight: 300;
+  font-style: italic;
 }
 
 main {
@@ -44,15 +58,17 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 90%;
+  max-width: fit-content;
 }
 
 hr {
-  margin: auto;
+  margin: 1em auto;
   width: 60%;
   border-style: solid;
   border-radius: 16px;
 }
 
-p {
+p, h1 {
   margin: 0;
 }
