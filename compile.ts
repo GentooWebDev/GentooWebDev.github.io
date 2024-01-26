@@ -1,6 +1,6 @@
-import * as yaml from 'https://deno.land/std@0.212.0/yaml/mod.ts';
-import { copySync, ensureDirSync, walk } from 'https://deno.land/std@0.212.0/fs/mod.ts';
-import { Eta } from 'https://deno.land/x/eta@v3.2.0/src/index.ts';
+import * as yaml from 'std/yaml/mod.ts';
+import { copySync, ensureDirSync, walk } from 'std/fs/mod.ts';
+import { Eta } from 'eta';
 import { minify } from 'npm:html-minifier-terser';
 import autoprefixer from 'npm:autoprefixer';
 import nested from 'npm:postcss-nested';
