@@ -3,6 +3,7 @@ body, html { height: 100%; width: 100%; margin: 0; }
 
 $PaddingAmount: 1vh;
 $ShadingColour: rgba(0, 0, 0, 0.15);
+$MobileSize: (max-width: 500px), (max-height: 600px);
 
 body {
   background: linear-gradient($ShadingColour, $ShadingColour),
@@ -12,7 +13,9 @@ body {
   transition: padding 0.5s ease-in-out;
   text-shadow: 0 0 1em black;
 
-  @media (max-width: 500px) { padding: 0; }
+  @media $(MobileSize) {
+    padding: 0;
+  }
 }
 
 #container {
@@ -31,7 +34,7 @@ body {
 
   transition: border-radius 0.5s ease-in-out;
 
-  @media (max-width: 500px) {
+  @media $(MobileSize) {
     font-size: 5vw;
     border-radius: 0;
   }
