@@ -4,7 +4,7 @@
     "eta": "https://deno.land/x/eta@v3.2.0/src/index.ts"
   },
   "tasks": {
-    "compile": "deno run --allow-read --allow-write --allow-env compile.ts",
+    "compile": "deno run --allow-read --allow-write --allow-env --allow-sys=osRelease compile.ts",
     "compile-notrust": "deno run compile.ts"
   }
 }

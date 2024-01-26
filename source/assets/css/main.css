@@ -1,14 +1,14 @@
 * { box-sizing: border-box; touch-action: manipulation; }
 body, html { height: 100%; width: 100%; margin: 0; }
 
-:root {
-  --padding-amount: 1vh;
-}
+$PaddingAmount: 1vh;
+$ShadingColour: rgba(0, 0, 0, 0.15);
 
 body {
-  background: linear-gradient(177deg, #759496 0%, #012426 80%, #012525 100%);
+  background: linear-gradient($ShadingColour, $ShadingColour),
+              linear-gradient(177deg, #759496 0%, #012426 80%, #012525 100%);
 
-  padding: var(--padding-amount);
+  padding: $PaddingAmount;
   transition: padding 0.5s ease-in-out;
   text-shadow: 0 0 1em black;
 
@@ -27,7 +27,7 @@ body {
   font-size: max(24px, 2vw);
 
   border-radius: 12px;
-  box-shadow: 0 0 var(--padding-amount) calc(var(--padding-amount) / 2) rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 $PaddingAmount calc($PaddingAmount / 2) $ShadingColour;
 
   transition: border-radius 0.5s ease-in-out;
 

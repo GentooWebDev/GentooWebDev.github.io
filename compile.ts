@@ -8,6 +8,7 @@ import cssnano from 'npm:cssnano';
 import postcss from 'npm:postcss';
 import customproperties from 'npm:postcss-custom-properties';
 import calc from 'npm:postcss-calc';
+import vars from 'npm:postcss-nested-vars';
 
 interface PageDefinition {
   title: string,
@@ -95,6 +96,7 @@ async function minHTML(html: string) {
 
 async function minCSS(css: string, name: string) {
   const result = await postcss([
+    vars(),
     nested,
     customproperties({ preserve: true }),
     calc({ warnWhenCannotResolve: true }),
