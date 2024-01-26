@@ -6,6 +6,8 @@ import autoprefixer from 'npm:autoprefixer';
 import nested from 'npm:postcss-nested';
 import cssnano from 'npm:cssnano';
 import postcss from 'npm:postcss';
+import customproperties from 'npm:postcss-custom-properties';
+import calc from 'npm:postcss-calc';
 
 interface PageDefinition {
   title: string,
@@ -94,6 +96,8 @@ async function minHTML(html: string) {
 async function minCSS(css: string, name: string) {
   const result = await postcss([
     nested,
+    customproperties({ preserve: true }),
+    calc({ warnWhenCannotResolve: true }),
     autoprefixer,
     cssnano
   ]).process(css, { from: `./source/assets/css/${name}` }).async();
