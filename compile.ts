@@ -10,17 +10,36 @@ import customproperties from 'npm:postcss-custom-properties';
 import calc from 'npm:postcss-calc';
 import vars from 'npm:postcss-nested-vars';
 
+interface MetaData {
+  name: string,
+  content: Record<string, string>
+}
+
 interface PageDefinition {
   title: string,
   description: string,
+  charset: string,
   css?: string[],
   js?: string[],
   gfonts?: string[],
-  meta?: Record<string, string>[]
+  meta?: MetaData[]
+}
+
+const defaultPageDefinition: Partial<PageDefinition> = {
+  charset: 'UTF-8',
+  meta: [
+    {
+      name: 'viewport',
+      content: {
+        width: 'device-width',
+        "initial-scale": '1.0'
+      }
+    }
+  ]
 }
 
 const eta = new Eta({ views: './source/markup' });
-const pagesData = yaml.parse(Deno.readTextFileSync('./pages.yaml')) as Record<string, PageDefinition>;
+const pagesData = Object.assign(defaultPageDefinition, yaml.parse(Deno.readTextFileSync('./pages.yaml')))
 
   //------------\\
  // ~MAIN BEGIN~ \\
