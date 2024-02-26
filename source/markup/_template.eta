@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8">
 
     <%~
       it.meta?.map(
         metadata => '<meta ' +
                       Object.entries(metadata).map(
-                        ([key, value]) => `${key}="${value}"`
+                        ([name, content]) =>
+                          `${name}="${typeof content == 'string'
+                            ? content
+                            : Object.entries(content).map(pair => pair.join('=')).join(', ')}"`
                       ).join(' ') +
                     '>'
       ).join() || '';

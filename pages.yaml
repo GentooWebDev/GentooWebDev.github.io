@@ -8,10 +8,3 @@ index:
     - css/main.css
   gfonts:
     - Ubuntu:ital,wght@0,400;0,700;1,300
-  meta:
-    - name: viewport
-      content:
-        width: device-width
-        initial-scale: 1.0
-        maximum-scale: 1.0
-        user-scalable: 0
