@@ -16,16 +16,19 @@
       ).join() || '';
     %>
 
+    <%~
+      it.gfonts ? '<link rel="preconnect" href="https://fonts.googleapis.com">' +
+                  '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+                : '';
+    %>
+
     <title><%= it.title %></title>
     <meta name="description" content="<%= it.description %>">
 
     <%~
-      it.gfonts ? '<link rel="preconnect" href="https://fonts.googleapis.com">' +
-                  '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
-                  it.gfonts.map(
-                    font => `<link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet">`
-                  ).join()
-                : '';
+      it.gfonts?.map(
+        font => `<link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet">`
+      ).join() || '';
     %>
 
     <%~
