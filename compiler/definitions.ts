@@ -1,5 +1,3 @@
-import { def } from "std/yaml/schema/default.ts";
-
 export interface MetaData {
   name: string,
   content: Record<string, string> | string
@@ -14,6 +12,11 @@ export interface PageDefinition {
   meta?: MetaData[]
 }
 
+export interface ConfigData {
+  defaultPage?: Partial<PageDefinition>,
+  pages: Record<string, PageDefinition>
+}
+
 export type PageDefinitionFile = Record<string, PageDefinition>
 
 export const defaultPageDefinition: Partial<PageDefinition> = {
@@ -26,4 +29,4 @@ export const defaultPageDefinition: Partial<PageDefinition> = {
       }
     }
   ]
-}
+};

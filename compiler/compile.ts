@@ -2,24 +2,31 @@ import * as yaml from 'std/yaml/mod.ts';
 import { walk } from 'std/fs/mod.ts';
 import { Eta } from 'eta';
 
-import { PageDefinition, defaultPageDefinition } from './definitions.ts';
+import { ConfigData } from './definitions.ts';
 import * as helpers from './helpers.ts';
 import * as fsHelpers from './fsHelpers.ts';
 
 const eta = new Eta({ views: './source/markup' });
-const pagesData = yaml.parse(Deno.readTextFileSync('./pages.yaml')) as Record<string, PageDefinition>;
+const configData = yaml.parse(Deno.readTextFileSync('./config.yaml')) as ConfigData;
+const pagesData = configData.pages;
 
 if(helpers.isDescriptionDefinedInMeta(pagesData))
   throw `A page's description was defined as a meta tag. Please use the 'description' property instead.`;
 
-  //------------\\
- // ~MAIN BEGIN~ \\
-//----------------\\
 fsHelpers.prepareDirectoryStructure();
 
 // Compile pages
 for(const name in pagesData) {
-  const res = eta.render(name, Object.assign({ ...defaultPageDefinition}, pagesData[name], { currentPage: name, pages: Object.keys(pagesData) }));
+  // Render the page
+  const res = eta.render(
+    name,
+    Object.assign(
+      { ...helpers.getDefaultPageDefinition(configData.defaultPage) },
+      pagesData[name],
+      { currentPage: name, pages: Object.keys(pagesData) }
+    )
+  );
+
   Deno.writeTextFileSync(`./output/${name}.html`, await helpers.minifyHTML(res));
 }
 

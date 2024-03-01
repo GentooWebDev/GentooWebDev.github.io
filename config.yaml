@@ -1,0 +1,22 @@
+defaultPage:
+    description: >-
+      Where sleek design meets penguin power.
+      Dive into creative solutions for your website.
+      Join the penguin revolution!
+    css:
+      - css/main.css
+    gfonts:
+      - Ubuntu:ital,wght@0,400;0,700;1,300
+
+pages:
+  index:
+    title: Home | Gentoo Web Development
+  
+  services:
+    title: Services | Gentoo Web Development
+  
+  portfolio:
+    title: Portfolio | Gentoo Web Development
+  
+  contact:
+    title: Contact | Gentoo Web Development

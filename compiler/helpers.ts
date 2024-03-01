@@ -8,7 +8,7 @@ import customproperties from 'npm:postcss-custom-properties';
 import calc from 'npm:postcss-calc';
 import vars from 'npm:postcss-nested-vars';
 
-import { PageDefinition } from './definitions.ts';
+import { PageDefinition, defaultPageDefinition } from './definitions.ts';
 
 export async function minifyCSS(css: string, name: string) {
   //@ts-ignore:
@@ -48,4 +48,11 @@ export function isDescriptionDefinedInMeta(pageData: Record<string, PageDefiniti
   }
 
   return false;
+}
+
+export function getDefaultPageDefinition(defaultPage?: Partial<PageDefinition>) {
+  return Object.assign(
+    defaultPageDefinition,
+    defaultPage || {}
+  );
 }
