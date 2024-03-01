@@ -19,7 +19,7 @@ fsHelpers.prepareDirectoryStructure();
 
 // Compile pages
 for(const name in pagesData) {
-  const res = eta.render(name, Object.assign({ ...defaultPageDefinition}, pagesData[name]));
+  const res = eta.render(name, Object.assign({ ...defaultPageDefinition}, pagesData[name], { currentPage: name, pages: Object.keys(pagesData) }));
   Deno.writeTextFileSync(`./output/${name}.html`, await helpers.minifyHTML(res));
 }
 
