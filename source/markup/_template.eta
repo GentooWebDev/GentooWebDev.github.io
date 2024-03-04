@@ -13,7 +13,7 @@
                             : Object.entries(content).map(pair => pair.join('=')).join(', ')}"`
                       ).join(' ') +
                     '>'
-      ).join() || '';
+      ).join('') || '';
     %>
 
     <%~
@@ -28,19 +28,19 @@
     <%~
       it.gfonts?.map(
         font => `<link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet">`
-      ).join() || '';
+      ).join('') || '';
     %>
 
     <%~
       it.css?.map(
         url => `<link rel="stylesheet" href="${'/assets' + (url.startsWith('/') ? url : '/' + url)}">`
-      ).join() || '';
+      ).join('') || '';
     %>
 
     <%~
       it.js?.map(
         url => `<script defer src="${'/assets' + (url.startsWith('/') ? url : '/' + url)}"></script>`
-      ).join() || '';
+      ).join('') || '';
     %>
   </head>
   <body>
