@@ -44,8 +44,8 @@
     %>
   </head>
   <body>
-    <div class="page-container">
-      <div class="page-content">
+    <div id="page-container">
+      <div id="page-content">
         <%~ it.body %>
       </div>
     </div>
