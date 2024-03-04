@@ -6,6 +6,8 @@ defaultPage:
     css:
       - css/main.css
     js:
+      - https://unpkg.com/@unseenco/e@2.4.0/dist/e.umd.js
+      - https://unpkg.com/@unseenco/taxi@1.5.1/dist/taxi.umd.js
       - js/main.js
     gfonts:
       - Ubuntu:ital,wght@0,400;0,700;1,300

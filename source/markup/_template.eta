@@ -44,8 +44,8 @@
     %>
   </head>
   <body>
-    <div id="page-container">
-      <div id="page-content">
+    <div data-taxi>
+      <div data-taxi-view>
         <%~ it.body %>
       </div>
     </div>
