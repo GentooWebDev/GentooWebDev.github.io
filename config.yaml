@@ -5,6 +5,8 @@ defaultPage:
       Join the penguin revolution!
     css:
       - css/main.css
+    js:
+      - js/main.js
     gfonts:
       - Ubuntu:ital,wght@0,400;0,700;1,300
 
