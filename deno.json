@@ -7,5 +7,6 @@
     "compile": "deno run --allow-read --allow-write --allow-env --allow-sys=osRelease ./compiler/compile.ts",
     "compile-notrust": "deno run ./compiler/compile.ts",
     "clean": "rm -rf ./output"
-  }
+  },
+  "exclude": ["output", "source"]
 }
