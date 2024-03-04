@@ -33,13 +33,13 @@
 
     <%~
       it.css?.map(
-        url => `<link rel="stylesheet" href="${'/assets' + (url.startsWith('/') ? url : '/' + url)}">`
+        url => `<link rel="stylesheet" href="${((url.startsWith('http://') || url.startsWith('https://')) ? url : '/assets' + (url.startsWith('/') ? url : '/' + url))}">`
       ).join('') || '';
     %>
 
     <%~
       it.js?.map(
-        url => `<script defer src="${'/assets' + (url.startsWith('/') ? url : '/' + url)}"></script>`
+        url => `<script defer src="${((url.startsWith('http://') || url.startsWith('https://')) ? url : '/assets' + (url.startsWith('/') ? url : '/' + url))}"></script>`
       ).join('') || '';
     %>
   </head>
