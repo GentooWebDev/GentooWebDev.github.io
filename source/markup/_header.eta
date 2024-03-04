@@ -3,13 +3,14 @@
     <img src="/assets/img/logo.png" alt="Gentoo Web Dev Logo">
   </div>
 
-  <menu>
+  <nav>
     <%~
       it.pages.map((page) => {
         const url = page === 'index' ? '/' : `/${page}`;
-        return `<li><a href="${page == it.currentPage ? '#' : url}" class="${page == it.currentPage ? 'active' : ''}">${url}</a></li>`;
+        return `<a href="${page == it.currentPage ? '#' : url}" class="${page == it.currentPage ? 'active' : ''}">${
+          url == '/' ? 'Home' : page.charAt(0).toUpperCase() + page.slice(1)
+        }</a>`;
       }).join('')
     %>
-    </menu>
-  </div>
+  </nav>
 </header>

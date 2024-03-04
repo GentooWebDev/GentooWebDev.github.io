@@ -1,6 +1,79 @@
 * { box-sizing: border-box; touch-action: manipulation; }
-body, html { height: 100%; width: 100%; margin: 0; }
+html, body { height: 100%; width: 100%; margin: 0; }
 
 body {
   font-family: "Ubuntu", sans-serif;
+
+  > .page-container {
+    display: flex;
+    justify-content: center;
+
+    > .page-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "header"
+        "main";
+
+      width: 90vw;
+
+      > header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: column;
+        grid-template-areas:
+          "logo links";
+
+        position: sticky;
+        padding: 3vw 0;
+        font-size: x-large;
+
+        > .logo {
+          grid-area: logo;
+          display: flex;
+          align-items: center;
+          gap: 1em;
+        }
+
+        > nav {
+          grid-area: links;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 1em;
+
+          > a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 700;
+            padding: 0.5em 0;
+            transition: all 0.3s ease;
+
+            &:hover {
+              color: #f00;
+
+              &:not(.active) { translate: 0 -0.3em; }
+              &.active {
+                translate: 0 0.3em;
+                opacity: 0.3;
+              }
+            }
+
+            &.active {
+              color: #f00;
+            }
+          }
+        }
+      }
+
+      > main {
+        grid-area: main;
+      }
+    }
+  }
 }
