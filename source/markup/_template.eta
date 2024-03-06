@@ -39,7 +39,7 @@
 
     <%~
       it.js?.map(
-        url => `<script defer src="${((url.startsWith('http://') || url.startsWith('https://')) ? url : '/assets' + (url.startsWith('/') ? url : '/' + url))}"></script>`
+        jsDef => `<script ${jsDef.mode ?? ''} ${jsDef.module ? 'type="module"' : ''} src="${((jsDef.path.startsWith('http://') || jsDef.path.startsWith('https://')) ? jsDef.path : '/assets' + (jsDef.path.startsWith('/') ? jsDef.path : '/' + jsDef.path))}"></script>`
       ).join('') || '';
     %>
   </head>

@@ -2,12 +2,16 @@ import * as yaml from 'std/yaml/mod.ts';
 import { walk } from 'std/fs/mod.ts';
 import { Eta } from 'eta';
 
-import { ConfigData } from './definitions.ts';
+import { ConfigData, isConfigData, isPageDefinition } from './definitions.ts';
 import * as helpers from './helpers.ts';
 import * as fsHelpers from './fsHelpers.ts';
 
 const eta = new Eta({ views: './source/markup' });
 const configData = yaml.parse(Deno.readTextFileSync('./config.yaml')) as ConfigData;
+
+if(!isConfigData(configData))
+  throw 'The config file is not properly formatted.';
+
 const pagesData = configData.pages;
 
 if(helpers.isDescriptionDefinedInMeta(pagesData))
@@ -17,14 +21,19 @@ fsHelpers.prepareDirectoryStructure();
 
 // Compile pages
 for(const name in pagesData) {
+  const fullPageData = Object.assign(
+    { ...helpers.getDefaultPageDefinition(configData.defaultPage) },
+    pagesData[name],
+    { currentPage: name, pages: Object.keys(pagesData) }
+  );
+
+  if(!isPageDefinition(fullPageData))
+    throw `The page '${name}' is not properly formatted.`;
+
   // Render the page
   const res = eta.render(
     name,
-    Object.assign(
-      { ...helpers.getDefaultPageDefinition(configData.defaultPage) },
-      pagesData[name],
-      { currentPage: name, pages: Object.keys(pagesData) }
-    )
+    helpers.fixAllJSDefinitions(fullPageData)
   );
 
   Deno.writeTextFileSync(`./output/${name}.html`, await helpers.minifyHTML(res));

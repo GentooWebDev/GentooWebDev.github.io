@@ -8,7 +8,7 @@ import customproperties from 'npm:postcss-custom-properties';
 import calc from 'npm:postcss-calc';
 import vars from 'npm:postcss-nested-vars';
 
-import { PageDefinition, defaultPageDefinition } from './definitions.ts';
+import { JSDefintion, PageDefinition, defaultPageDefinition } from './definitions.ts';
 
 export async function minifyCSS(css: string, name: string) {
   //@ts-ignore:
@@ -41,7 +41,7 @@ export async function minifyHTML(html: string) {
   });
 }
 
-export function isDescriptionDefinedInMeta(pageData: Record<string, PageDefinition>): boolean {
+export function isDescriptionDefinedInMeta(pageData: Record<string, Partial<PageDefinition>>) {
   for (const data of Object.values(pageData)) {
     if(data.meta?.some(meta => meta.name == 'description'))
       return true;
@@ -55,4 +55,19 @@ export function getDefaultPageDefinition(defaultPage?: Partial<PageDefinition>) 
     defaultPageDefinition,
     defaultPage || {}
   );
+}
+
+export function getJSDefinition(input: string | JSDefintion): JSDefintion {
+  if(typeof input !== 'string') return input;
+
+  return {
+    path: input,
+    module: false,
+    mode: 'defer'
+  };
+}
+
+export function fixAllJSDefinitions(page: PageDefinition) {
+  page.js = page.js?.map(getJSDefinition);
+  return page;
 }
