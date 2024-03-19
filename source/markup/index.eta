@@ -1,7 +1,5 @@
 <% layout("./_template.eta") %>
 
-<%~ include("./_header.eta", it) %>
-
 <main>
   <section class="card">
     <h1>Custom Websites, made by hand</h1>

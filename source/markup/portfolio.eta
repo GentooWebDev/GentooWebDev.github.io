@@ -1,7 +1,5 @@
 <% layout("./_template.eta") %>
 
-<%~ include("./_header.eta", it) %>
-
 <main>
   Portfolio
 </main>

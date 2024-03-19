@@ -44,8 +44,9 @@
     %>
   </head>
   <body>
-    <div data-taxi>
-      <div data-taxi-view>
+    <div data-taxi id="pageContainer">
+      <div data-taxi-view id="pageView">
+        <%~ include("./_header.eta", it) %>
         <%~ it.body %>
       </div>
     </div>
